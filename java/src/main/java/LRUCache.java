@@ -1,4 +1,5 @@
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class LRUCache {
@@ -22,10 +23,23 @@ public class LRUCache {
     void refer(int x)
     {
         // not present in cache
-
+        if (!map.contains(x)) {
+            // cache is full
+            if (dq.size() == csize) {
+                // remove the least recently used element
+                int last = dq.removeLast();
+                map.remove(last);
+            }
+        }
         // present in cache
+        else {
+            // remove the element to move it to front
+            dq.remove(x);
+        }
 
-        // update reference
+        // update reference: add to front of queue
+        dq.push(x);
+        map.add(x);
     }
 
     // display contents of cache

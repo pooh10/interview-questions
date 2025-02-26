@@ -9,12 +9,15 @@
     <name>LRU JAVA</name>
 
     <properties>
-        <maven.compile.version>3.8.0</maven.compile.version>
-        <maven.surefire.version>2.22.0</maven.surefire.version>
-        <maven.jar.verison>3.1.2</maven.jar.verison>
-        <junit-platform.version>5.5.0-RC2</junit-platform.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    	<maven.compile.version>3.8.0</maven.compile.version>
+    	<maven.surefire.version>2.22.0</maven.surefire.version>
+    	<maven.jar.verison>3.1.2</maven.jar.verison>
+    	<junit-platform.version>5.5.0-RC2</junit-platform.version>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<jdk.version>1.8</jdk.version>
+    	<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
 
     <build>
         <plugins>
@@ -28,15 +31,23 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compile.version}</version>
                 <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <source>1.8</source>
+        			<target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.verison}</version>
-            </plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-jar-plugin</artifactId>
+    			<version>${maven.jar.verison}</version>
+    			<configuration>
+        			<archive>
+            			<manifest>
+                			<addClasspath>true</addClasspath>
+                			<mainClass>LRUCache</mainClass>
+            			</manifest>
+        			</archive>
+    			</configuration>
+			</plugin>
         </plugins>
     </build>
 
